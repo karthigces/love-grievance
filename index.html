@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grievance Portal for My Love</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f6;
+      color: #4a4a4a;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
+    }
+    h1 {
+      text-align: center;
+      color: #d63384;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+    }
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 2px solid #f8c8dc;
+      border-radius: 10px;
+    }
+    button {
+      background-color: #ff69b4;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 25px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #e754a1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📝 Tell Me, My Love</h1>
+
+  <form id="grievanceForm">
+    <label for="title">💬 Title:</label>
+    <input type="text" id="title" name="title" required placeholder="Short title of what's bothering you..." />
+
+    <label for="bother">💔 What's bothering you?</label>
+    <textarea id="bother" name="bother" rows="4" required placeholder="Let it all out here... I'm listening ❤️"></textarea>
+
+    <label for="mood">😊 Mood Right Now:</label>
+    <select id="mood" name="mood">
+      <option>🙂 Happy</option>
+      <option>😢 Sad</option>
+      <option>😠 Angry</option>
+      <option>😴 Tired</option>
+      <option>😐 Meh</option>
+      <option>😭 Crying</option>
+    </select>
+
+    <label for="severity">🚨 Severity:</label>
+    <select id="severity" name="severity">
+      <option>🌸 Low – Just wanted to share</option>
+      <option>🌼 Medium – Please talk to me</option>
+      <option>🌺 High – Fix it right now please 😤</option>
+      <option>🔥 Critical – You’re in big trouble mister 😡</option>
+    </select>
+
+    <button type="submit">Send to WhatsApp ❤️</button>
+  </form>
+
+  <script>
+    document.getElementById('grievanceForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const bother = document.getElementById('bother').value;
+      const mood = document.getElementById('mood').value;
+      const severity = document.getElementById('severity').value;
+
+      const message = `📝 *Grievance Submission from Your Girl* 💖%0A%0A` +
+                      `*Title:* ${encodeURIComponent(title)}%0A` +
+                      `*What's bothering me:* ${encodeURIComponent(bother)}%0A` +
+                      `*Mood right now:* ${encodeURIComponent(mood)}%0A` +
+                      `*Severity:* ${encodeURIComponent(severity)}%0A%0A` +
+                      `💌 Please respond with love!`;
+
+      const phoneNumber = "91XXXXXXXXXX"; // 👈 Replace with your WhatsApp number (with country code)
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+
+      window.open(whatsappURL, '_blank');
+    });
+  </script>
+
+</body>
+</html>
