@@ -89,18 +89,19 @@
     const mood = document.getElementById('mood').value;
     const severity = document.getElementById('severity').value;
 
-    const message =
-      `📝 *Grievance Submission from Your Girl* 💖\n\n` +
-      `*Title:* ${title}\n` +
-      `*What's bothering me:* ${bother}\n` +
-      `*Mood right now:* ${mood}\n` +
-      `*Severity:* ${severity}\n\n` +
-      `💌 Please respond with love!`;
+    const message = 
+      "📝 *Grievance Submission from Your Girl* 💖\n\n" +
+      "*Title:* " + title + "\n" +
+      "*What's bothering me:* " + bother + "\n" +
+      "*Mood right now:* " + mood + "\n" +
+      "*Severity:* " + severity + "\n\n" +
+      "💌 Please respond with love!";
 
+    // Properly encode for URL
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
 
-    // Open WhatsApp with prefilled message, user chooses contact
+    // Open WhatsApp (let user select contact)
+    const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
     window.open(whatsappURL, '_blank');
   });
 </script>
