@@ -80,28 +80,31 @@
     <button type="submit">Send to WhatsApp ❤️</button>
   </form>
 
-  <script>
-    document.getElementById('grievanceForm').addEventListener('submit', function(event) {
-      event.preventDefault();
+<script>
+  document.getElementById('grievanceForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-      const title = document.getElementById('title').value;
-      const bother = document.getElementById('bother').value;
-      const mood = document.getElementById('mood').value;
-      const severity = document.getElementById('severity').value;
+    const title = document.getElementById('title').value;
+    const bother = document.getElementById('bother').value;
+    const mood = document.getElementById('mood').value;
+    const severity = document.getElementById('severity').value;
 
-      const message = `📝 *Grievance Submission from Your Girl* 💖%0A%0A` +
-                      `*Title:* ${encodeURIComponent(title)}%0A` +
-                      `*What's bothering me:* ${encodeURIComponent(bother)}%0A` +
-                      `*Mood right now:* ${encodeURIComponent(mood)}%0A` +
-                      `*Severity:* ${encodeURIComponent(severity)}%0A%0A` +
-                      `💌 Please respond with love!`;
+    const message =
+      `📝 *Grievance Submission from Your Girl* 💖\n\n` +
+      `*Title:* ${title}\n` +
+      `*What's bothering me:* ${bother}\n` +
+      `*Mood right now:* ${mood}\n` +
+      `*Severity:* ${severity}\n\n` +
+      `💌 Please respond with love!`;
 
-      const phoneNumber = "91XXXXXXXXXX"; // 👈 Replace with your WhatsApp number (with country code)
-      const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
 
-      window.open(whatsappURL, '_blank');
-    });
-  </script>
+    // Open WhatsApp with prefilled message, user chooses contact
+    window.open(whatsappURL, '_blank');
+  });
+</script>
+
 
 </body>
 </html>
